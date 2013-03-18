@@ -8,6 +8,10 @@ public class DotaMatch {
     private Long start_time;
     private Integer lobby_type;
     private List<Player> players;
+    private Faction winningFaction;
+    private Integer duration;
+    private Integer radiantTowerStatus;
+    private Integer direTowerStatus;
 
     public DotaMatch(Long match_id, Long match_seq_num, Long start_time, Integer lobby_type, List<Player> players) {
 
@@ -16,10 +20,6 @@ public class DotaMatch {
         this.start_time = start_time;
         this.lobby_type = lobby_type;
         this.players = players;
-    }
-
-    public DotaMatch() {
-
     }
 
     @Override
@@ -46,5 +46,21 @@ public class DotaMatch {
         result = 31 * result + lobby_type.hashCode();
         result = 31 * result + players.hashCode();
         return result;
+    }
+
+    public Faction winningFaction() {
+        return winningFaction;
+    }
+
+    public Integer duration() {
+        return duration;
+    }
+
+    public Integer radiantTowerStatus() {
+        return radiantTowerStatus;
+    }
+
+    public Integer direTowerStatus() {
+        return direTowerStatus;
     }
 }

@@ -6,8 +6,7 @@
         a. get the latest 25 matches
         b. get details of specific match by match id
         c. get heroes
-        d. get player summary by steam id (multiple summaries in one call)
-        e. get league listing
-        f. get live league games
-        g. get match history by sequence number
-        i. get team info by team id
+        d. get league listing
+        e. get live league games
+        f. get match history by sequence number
+        g. get team info by team id

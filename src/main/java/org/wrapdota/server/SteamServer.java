@@ -78,4 +78,34 @@ public class SteamServer {
 
         return dotaMatches;
     }
+
+    public DotaMatch getMatchDetailsBy(Long matchId) throws IOException {
+
+        String URLToGetLatestMatches = STEAM_API_URL + TEST_API_URL + "GetMatchDetails" + "/V001/?key=" + API_KEY;
+        HttpGet request = new HttpGet(URLToGetLatestMatches);
+        HttpResponse response = client.execute(request);
+
+        HttpEntity entity = response.getEntity();
+        InputStream inputStream = entity.getContent();
+
+        InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+
+        StringWriter stringWriter = new StringWriter();
+        IOUtils.copy(inputStreamReader, stringWriter);
+
+        String responseString = stringWriter.toString();
+
+        JsonParser jsonParser = new JsonParser();
+        JsonElement jsonResponseElement = jsonParser.parse(responseString);
+
+        JsonObject jsonResponseObject = jsonResponseElement.getAsJsonObject();
+
+        JsonElement resultJsonElement = jsonResponseObject.get("result");
+
+        JsonObject resultJsonObject = resultJsonElement.getAsJsonObject();
+
+
+
+        return null;
+    }
 }

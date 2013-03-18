@@ -3,11 +3,14 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.entity.StringEntity;
+import org.junit.Before;
 import org.junit.Test;
 import org.wrapdota.model.DotaMatch;
+import org.wrapdota.model.Faction;
 import org.wrapdota.model.Player;
 import org.wrapdota.server.SteamServer;
 
+import javax.xml.ws.FaultAction;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,13 +21,19 @@ import static org.mockito.Mockito.mock;
 
 public class SteamServerTests {
 
+    HttpClient mockHTTPClient = mock(HttpClient.class);
+    HttpResponse mockHttpResponse = mock(HttpResponse.class);
+
+    @Before
+    void setup() throws IOException {
+        given(mockHTTPClient.execute(any(HttpGet.class))).willReturn(mockHttpResponse);
+    }
+
     @Test()
     public void itGetsLatestMatches() throws IOException {
 
         //given
-        HttpClient mockHTTPClient = mock(HttpClient.class);
-        HttpResponse mockHttpResponse = mock(HttpResponse.class);
-
+        SteamServer steamServer = new SteamServer("my_dummy_api_key", mockHTTPClient);
         HttpEntity stringEntity = new StringEntity("{\n" +
                 "\"result\" : {\n" +
                 "\"status\" : 1,\n" +
@@ -153,10 +162,9 @@ public class SteamServerTests {
                 "}");
 
 
-        given(mockHTTPClient.execute(any(HttpGet.class))).willReturn(mockHttpResponse);
+
         given(mockHttpResponse.getEntity()).willReturn(stringEntity);
 
-        SteamServer steamServer = new SteamServer("my_dummy_api_key", mockHTTPClient);
         DotaMatch expectedMatchOne = new DotaMatch(1705566L, 1646464L, 1362930291L, 0, setupFirstPlayers());
         DotaMatch expectedMatchTwo = new DotaMatch(1705533L, 1646432L, 1362930245L, 1, setupSecondPlayers());
 
@@ -168,6 +176,24 @@ public class SteamServerTests {
         assert (expectedMatchTwo.equals(matches.get(1)));
     }
 
+    @Test
+    public void itGetsDetailsOfMatchByMatchId() throws IOException {
+        //given
+        SteamServer steamServer = new SteamServer("my_dummy_api_key", mockHTTPClient);
+        Long matchId = 1705566L;
+
+
+
+        //when
+        DotaMatch dotaMatch = steamServer.getMatchDetailsBy(matchId);
+
+
+        //then
+        assert(dotaMatch.winningFaction() == Faction.RADIANT);
+        assert(dotaMatch.duration() == 1000);
+
+
+    }
 
     private List<Player> setupFirstPlayers() {
 

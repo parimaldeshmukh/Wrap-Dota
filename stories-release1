@@ -1,0 +1,13 @@
+1. As a wrap-dota user, I want to set my API key only once, so that I don't have to remember it and provide it with every call.
+
+2. As a wrap-dota user, I do not want to know the specifics of the URLs that are being used, so that I can focus on my application.
+
+3. As a wrap-dota user, I want the following functionality -
+        a. get the latest 25 matches
+        b. get details of specific match by match id
+        c. get heroes
+        d. get player summary by steam id (multiple summaries in one call)
+        e. get league listing
+        f. get live league games
+        g. get match history by sequence number
+        i. get team info by team id

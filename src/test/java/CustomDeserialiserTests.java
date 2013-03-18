@@ -38,7 +38,7 @@ public class CustomDeserialiserTests {
     }
 
     @Test
-    public void itDeserializesDotaMatch() {
+    public void itDeserializesDotaMatchFromJsonResponse() {
         String json = "{\n" +
                 "\"match_id\": 1705566,\n\"" +
                 "match_seq_num\": 1646464,\n" +

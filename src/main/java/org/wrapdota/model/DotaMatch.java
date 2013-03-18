@@ -3,13 +3,13 @@ package org.wrapdota.model;
 import java.util.List;
 
 public class DotaMatch {
-    private  Long match_id;
-    private  Long match_seq_num;
-    private  Long start_time;
-    private  Integer lobby_type;
-    private  List<Player> players;
+    private Long match_id;
+    private Long match_seq_num;
+    private Long start_time;
+    private Integer lobby_type;
+    private List<Player> players;
 
-    public DotaMatch(Long match_id, Long match_seq_num, Long start_time, Integer lobby_type, List<Player> players){
+    public DotaMatch(Long match_id, Long match_seq_num, Long start_time, Integer lobby_type, List<Player> players) {
 
         this.match_id = match_id;
         this.match_seq_num = match_seq_num;
@@ -18,7 +18,7 @@ public class DotaMatch {
         this.players = players;
     }
 
-    public DotaMatch(){
+    public DotaMatch() {
 
     }
 

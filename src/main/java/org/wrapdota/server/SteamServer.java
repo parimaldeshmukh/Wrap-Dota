@@ -6,11 +6,13 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.entity.BasicHttpEntity;
 import org.wrapdota.deserializer.DotaMatchDeserializer;
 import org.wrapdota.model.DotaMatch;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,8 +72,8 @@ public class SteamServer {
         JsonArray matches = resultJsonObject.get("matches").getAsJsonArray();
 
         List<DotaMatch> dotaMatches = new ArrayList<DotaMatch>();
-        for(int index = 0; index < matches.size() ; index++){
-            dotaMatches.add(dotaMatchGson.fromJson(matches.get(index),DotaMatch.class));
+        for (int index = 0; index < matches.size(); index++) {
+            dotaMatches.add(dotaMatchGson.fromJson(matches.get(index), DotaMatch.class));
         }
 
         return dotaMatches;

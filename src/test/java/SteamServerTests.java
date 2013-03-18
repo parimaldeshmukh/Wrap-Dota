@@ -1,20 +1,14 @@
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.HttpVersion;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.entity.BasicHttpEntity;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.message.BasicHttpResponse;
-import org.apache.http.message.BasicStatusLine;
 import org.junit.Test;
 import org.wrapdota.model.DotaMatch;
 import org.wrapdota.model.Player;
 import org.wrapdota.server.SteamServer;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -159,21 +153,19 @@ public class SteamServerTests {
                 "}");
 
 
-
-
         given(mockHTTPClient.execute(any(HttpGet.class))).willReturn(mockHttpResponse);
         given(mockHttpResponse.getEntity()).willReturn(stringEntity);
 
         SteamServer steamServer = new SteamServer("my_dummy_api_key", mockHTTPClient);
-        DotaMatch expectedMatchOne = new DotaMatch(1705566L,1646464L,1362930291L,0, setupFirstPlayers());
-        DotaMatch expectedMatchTwo = new DotaMatch(1705533L, 1646432L,1362930245L,1, setupSecondPlayers());
+        DotaMatch expectedMatchOne = new DotaMatch(1705566L, 1646464L, 1362930291L, 0, setupFirstPlayers());
+        DotaMatch expectedMatchTwo = new DotaMatch(1705533L, 1646432L, 1362930245L, 1, setupSecondPlayers());
 
         //when
         List<DotaMatch> matches = steamServer.getLatestMatches();
 
         //then
-        assert(expectedMatchOne.equals(matches.get(0)));
-        assert(expectedMatchTwo.equals(matches.get(1)));
+        assert (expectedMatchOne.equals(matches.get(0)));
+        assert (expectedMatchTwo.equals(matches.get(1)));
     }
 
 
@@ -181,34 +173,54 @@ public class SteamServerTests {
 
         ArrayList<Player> players = new ArrayList<Player>(10);
 
-        Long accountId = 4294967295L; Integer playerSlot = 0; Integer heroId = 21;
+        Long accountId = 4294967295L;
+        Integer playerSlot = 0;
+        Integer heroId = 21;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 4294962395L; playerSlot = 1; heroId = 71;
+        accountId = 4294962395L;
+        playerSlot = 1;
+        heroId = 71;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 1291232395L; playerSlot = 2; heroId = 5;
+        accountId = 1291232395L;
+        playerSlot = 2;
+        heroId = 5;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 1294969875L; playerSlot = 3; heroId = 97;
+        accountId = 1294969875L;
+        playerSlot = 3;
+        heroId = 97;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 1294964565L; playerSlot = 4; heroId = 4;
+        accountId = 1294964565L;
+        playerSlot = 4;
+        heroId = 4;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 9874962395L; playerSlot = 128; heroId = 42;
+        accountId = 9874962395L;
+        playerSlot = 128;
+        heroId = 42;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 2464962395L; playerSlot = 129; heroId = 1;
+        accountId = 2464962395L;
+        playerSlot = 129;
+        heroId = 1;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 5794962395L; playerSlot = 130; heroId = 32;
+        accountId = 5794962395L;
+        playerSlot = 130;
+        heroId = 32;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 9634962395L; playerSlot = 131; heroId = 86;
+        accountId = 9634962395L;
+        playerSlot = 131;
+        heroId = 86;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 3324962395L; playerSlot = 132; heroId = 8;
+        accountId = 3324962395L;
+        playerSlot = 132;
+        heroId = 8;
         players.add(new Player(accountId, playerSlot, heroId));
 
         return players;
@@ -218,34 +230,54 @@ public class SteamServerTests {
 
         ArrayList<Player> players = new ArrayList<Player>(10);
 
-        Long accountId = 4294967295L; Integer playerSlot = 0; Integer heroId = 11;
+        Long accountId = 4294967295L;
+        Integer playerSlot = 0;
+        Integer heroId = 11;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 4294962395L; playerSlot = 1; heroId = 35;
+        accountId = 4294962395L;
+        playerSlot = 1;
+        heroId = 35;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 1291232395L; playerSlot = 2; heroId = 10;
+        accountId = 1291232395L;
+        playerSlot = 2;
+        heroId = 10;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 1294969875L; playerSlot = 3; heroId = 48;
+        accountId = 1294969875L;
+        playerSlot = 3;
+        heroId = 48;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 1294964565L; playerSlot = 4; heroId = 8;
+        accountId = 1294964565L;
+        playerSlot = 4;
+        heroId = 8;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 9874962395L; playerSlot = 128; heroId = 21;
+        accountId = 9874962395L;
+        playerSlot = 128;
+        heroId = 21;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 2464962395L; playerSlot = 129; heroId = 2;
+        accountId = 2464962395L;
+        playerSlot = 129;
+        heroId = 2;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 5794962395L; playerSlot = 130; heroId = 17;
+        accountId = 5794962395L;
+        playerSlot = 130;
+        heroId = 17;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 9634962395L; playerSlot = 131; heroId = 43;
+        accountId = 9634962395L;
+        playerSlot = 131;
+        heroId = 43;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 3324962395L; playerSlot = 132; heroId = 16;
+        accountId = 3324962395L;
+        playerSlot = 132;
+        heroId = 16;
         players.add(new Player(accountId, playerSlot, heroId));
 
         return players;

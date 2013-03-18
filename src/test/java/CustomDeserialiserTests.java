@@ -33,12 +33,12 @@ public class CustomDeserialiserTests {
         Player actualPlayer = playerGson.fromJson(json, Player.class);
 
         //then
-        assert(expectedPlayer.equals(actualPlayer));
+        assert (expectedPlayer.equals(actualPlayer));
 
     }
 
     @Test
-    public void itDeserializesDotaMatch(){
+    public void itDeserializesDotaMatch() {
         String json = "{\n" +
                 "\"match_id\": 1705566,\n\"" +
                 "match_seq_num\": 1646464,\n" +
@@ -98,7 +98,7 @@ public class CustomDeserialiserTests {
                 "]\n" +
                 "}";
 
-        DotaMatch expectedDotaMatch = new DotaMatch(1705566L,1646464L,1362930291L,0, setupFirstPlayers());
+        DotaMatch expectedDotaMatch = new DotaMatch(1705566L, 1646464L, 1362930291L, 0, setupFirstPlayers());
 
         //when
         GsonBuilder gsonBuilder = new GsonBuilder();
@@ -110,7 +110,7 @@ public class CustomDeserialiserTests {
 
         //then
 
-        assert(actualDotaMatch.equals(expectedDotaMatch));
+        assert (actualDotaMatch.equals(expectedDotaMatch));
 
     }
 
@@ -118,34 +118,54 @@ public class CustomDeserialiserTests {
 
         ArrayList<Player> players = new ArrayList<Player>(10);
 
-        Long accountId = 4294967295L; Integer playerSlot = 0; Integer heroId = 21;
+        Long accountId = 4294967295L;
+        Integer playerSlot = 0;
+        Integer heroId = 21;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 4294962395L; playerSlot = 1; heroId = 71;
+        accountId = 4294962395L;
+        playerSlot = 1;
+        heroId = 71;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 1291232395L; playerSlot = 2; heroId = 5;
+        accountId = 1291232395L;
+        playerSlot = 2;
+        heroId = 5;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 1294969875L; playerSlot = 3; heroId = 97;
+        accountId = 1294969875L;
+        playerSlot = 3;
+        heroId = 97;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 1294964565L; playerSlot = 4; heroId = 4;
+        accountId = 1294964565L;
+        playerSlot = 4;
+        heroId = 4;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 9874962395L; playerSlot = 128; heroId = 42;
+        accountId = 9874962395L;
+        playerSlot = 128;
+        heroId = 42;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 2464962395L; playerSlot = 129; heroId = 1;
+        accountId = 2464962395L;
+        playerSlot = 129;
+        heroId = 1;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 5794962395L; playerSlot = 130; heroId = 32;
+        accountId = 5794962395L;
+        playerSlot = 130;
+        heroId = 32;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 9634962395L; playerSlot = 131; heroId = 86;
+        accountId = 9634962395L;
+        playerSlot = 131;
+        heroId = 86;
         players.add(new Player(accountId, playerSlot, heroId));
 
-        accountId = 3324962395L; playerSlot = 132; heroId = 8;
+        accountId = 3324962395L;
+        playerSlot = 132;
+        heroId = 8;
         players.add(new Player(accountId, playerSlot, heroId));
 
         return players;

@@ -72,9 +72,12 @@ public class SteamServer {
         JsonArray matches = resultJsonObject.get("matches").getAsJsonArray();
 
         List<DotaMatch> dotaMatches = new ArrayList<DotaMatch>();
-        for (int index = 0; index < matches.size(); index++) {
-            dotaMatches.add(dotaMatchGson.fromJson(matches.get(index), DotaMatch.class));
+
+        for(JsonElement match : matches) {
+            dotaMatches.add(dotaMatchGson.fromJson(match, DotaMatch.class));
         }
+
+        assert(dotaMatches.size() == numberOfResults);
 
         return dotaMatches;
     }

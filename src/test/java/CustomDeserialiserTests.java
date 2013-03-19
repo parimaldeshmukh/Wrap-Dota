@@ -98,7 +98,7 @@ public class CustomDeserialiserTests {
                 "]\n" +
                 "}";
 
-        DotaMatch expectedDotaMatch = new DotaMatch(1705566L, 1646464L, 1362930291L, 0, setupFirstPlayers());
+        DotaMatch expectedDotaMatch = new DotaMatch(1705566L, 1646464L, 1362930291L, 0, setupPlayers());
 
         //when
         GsonBuilder gsonBuilder = new GsonBuilder();
@@ -114,7 +114,7 @@ public class CustomDeserialiserTests {
 
     }
 
-    private List<Player> setupFirstPlayers() {
+    private List<Player> setupPlayers() {
 
         ArrayList<Player> players = new ArrayList<Player>(10);
 

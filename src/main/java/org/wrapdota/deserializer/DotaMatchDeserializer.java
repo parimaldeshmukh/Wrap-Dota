@@ -71,12 +71,17 @@ public class DotaMatchDeserializer implements JsonDeserializer<DotaMatch> {
         GsonBuilder playerGsonBuilder = new GsonBuilder();
         playerGsonBuilder.registerTypeAdapter(Player.class, new PlayerDeserializer());
         Gson playerDeserializer = playerGsonBuilder.create();
+//
+//        for (int i = 0; i < playerJsonArray.size(); i++) {
+//            JsonElement playerJsonElement = playerJsonArray.get(i);
+//            Player player = playerDeserializer.fromJson(playerJsonElement, Player.class);
+//            players.add(player);
+//        }
 
-        for (int i = 0; i < playerJsonArray.size(); i++) {
-            JsonElement playerJsonElement = playerJsonArray.get(i);
-            Player player = playerDeserializer.fromJson(playerJsonElement, Player.class);
-            players.add(player);
+        for(JsonElement playerJson : playerJsonArray){
+            players.add(playerDeserializer.fromJson(playerJson, Player.class));
         }
+
         return players;
     }
 }

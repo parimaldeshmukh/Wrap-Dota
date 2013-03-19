@@ -257,7 +257,7 @@ public class SteamServerTests {
                 "\n" +
                 "},\n" +
                 "{\n" +
-                "\"account_id\": 4294967295,\n" +
+                "\"account_id\": 4294962395,\n" +
                 "\"player_slot\": 1,\n" +
                 "\"hero_id\": 71,\n" +
                 "\"item_0\": 63,\n" +
@@ -330,7 +330,7 @@ public class SteamServerTests {
                 "\n" +
                 "},\n" +
                 "{\n" +
-                "\"account_id\": 4294967295,\n" +
+                "\"account_id\": 1291232395,\n" +
                 "\"player_slot\": 2,\n" +
                 "\"hero_id\": 5,\n" +
                 "\"item_0\": 214,\n" +
@@ -413,7 +413,7 @@ public class SteamServerTests {
                 "\n" +
                 "},\n" +
                 "{\n" +
-                "\"account_id\": 4294967295,\n" +
+                "\"account_id\": 1294969875,\n" +
                 "\"player_slot\": 3,\n" +
                 "\"hero_id\": 97,\n" +
                 "\"item_0\": 180,\n" +
@@ -481,7 +481,7 @@ public class SteamServerTests {
                 "\n" +
                 "},\n" +
                 "{\n" +
-                "\"account_id\": 4294967295,\n" +
+                "\"account_id\": 1294964565,\n" +
                 "\"player_slot\": 4,\n" +
                 "\"hero_id\": 4,\n" +
                 "\"item_0\": 63,\n" +
@@ -549,7 +549,7 @@ public class SteamServerTests {
                 "\n" +
                 "},\n" +
                 "{\n" +
-                "\"account_id\": 4294967295,\n" +
+                "\"account_id\": 9874962395,\n" +
                 "\"player_slot\": 128,\n" +
                 "\"hero_id\": 42,\n" +
                 "\"item_0\": 16,\n" +
@@ -602,7 +602,7 @@ public class SteamServerTests {
                 "\n" +
                 "},\n" +
                 "{\n" +
-                "\"account_id\": 4294967295,\n" +
+                "\"account_id\": 2464962395,\n" +
                 "\"player_slot\": 129,\n" +
                 "\"hero_id\": 1,\n" +
                 "\"item_0\": 0,\n" +
@@ -660,7 +660,7 @@ public class SteamServerTests {
                 "\n" +
                 "},\n" +
                 "{\n" +
-                "\"account_id\": 4294967295,\n" +
+                "\"account_id\": 5794962395,\n" +
                 "\"player_slot\": 130,\n" +
                 "\"hero_id\": 32,\n" +
                 "\"item_0\": 71,\n" +
@@ -723,7 +723,7 @@ public class SteamServerTests {
                 "\n" +
                 "},\n" +
                 "{\n" +
-                "\"account_id\": 4294967295,\n" +
+                "\"account_id\": 9634962395,\n" +
                 "\"player_slot\": 131,\n" +
                 "\"hero_id\": 86,\n" +
                 "\"item_0\": 44,\n" +
@@ -771,7 +771,7 @@ public class SteamServerTests {
                 "\n" +
                 "},\n" +
                 "{\n" +
-                "\"account_id\": 4294967295,\n" +
+                "\"account_id\": 3324962395,\n" +
                 "\"player_slot\": 132,\n" +
                 "\"hero_id\": 8,\n" +
                 "\"item_0\": 11,\n" +

@@ -3,15 +3,25 @@ package org.wrapdota.model;
 import java.util.List;
 
 public class DotaMatch {
-    private Long match_id;
-    private Long match_seq_num;
-    private Long start_time;
-    private Integer lobby_type;
-    private List<Player> players;
+    private final Long match_id;
+    private final Long match_seq_num;
+    private final Long start_time;
+    private final Integer lobby_type;
+    private final List<Player> players;
     private Faction winningFaction;
-    private Integer duration;
+    private Long duration;
     private Integer radiantTowerStatus;
     private Integer direTowerStatus;
+    private Integer radiantBarrackStatus;
+    private Integer direBarrackStatus;
+    private Integer cluster;
+    private Integer humanPlayers;
+    private Integer leagueId;
+    private Integer positiveVotes;
+    private Integer negativeVotes;
+    private Integer gameMode;
+    private Long firstBloodTime;
+    private Integer season;
 
     public DotaMatch(Long match_id, Long match_seq_num, Long start_time, Integer lobby_type, List<Player> players) {
 
@@ -52,7 +62,7 @@ public class DotaMatch {
         return winningFaction;
     }
 
-    public Integer duration() {
+    public Long duration() {
         return duration;
     }
 
@@ -62,5 +72,23 @@ public class DotaMatch {
 
     public Integer direTowerStatus() {
         return direTowerStatus;
+    }
+
+    public void addDetails(Long firstBloodTime, Integer season, Faction winningFaction, Long duration, Integer radiantTowerStatus, Integer direTowerStatus, Integer radiantBarrackStatus, Integer direBarrackStatus, Integer cluster, Integer humanPlayers, Integer leagueId, Integer positiveVotes, Integer negativeVotes, Integer gameMode) {
+
+        this.firstBloodTime = firstBloodTime;
+        this.season = season;
+        this.winningFaction = winningFaction;
+        this.duration = duration;
+        this.radiantTowerStatus = radiantTowerStatus;
+        this.direTowerStatus = direTowerStatus;
+        this.radiantBarrackStatus = radiantBarrackStatus;
+        this.direBarrackStatus = direBarrackStatus;
+        this.cluster = cluster;
+        this.humanPlayers = humanPlayers;
+        this.leagueId = leagueId;
+        this.positiveVotes = positiveVotes;
+        this.negativeVotes = negativeVotes;
+        this.gameMode = gameMode;
     }
 }

@@ -102,10 +102,9 @@ public class SteamServer {
 
         JsonElement resultJsonElement = jsonResponseObject.get("result");
 
-        JsonObject resultJsonObject = resultJsonElement.getAsJsonObject();
 
+        DotaMatch match = dotaMatchGson.fromJson(resultJsonElement, DotaMatch.class);
 
-
-        return null;
+        return match;
     }
 }

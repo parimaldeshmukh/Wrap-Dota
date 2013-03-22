@@ -3,34 +3,11 @@ package org.wrapdota.model;
 import java.util.List;
 
 public class DotaMatch {
-    private final Long match_id;
-    private final Long match_seq_num;
-    private final Long start_time;
-    private final Integer lobby_type;
-    private final List<Player> players;
+
     private Faction winningFaction;
-    private Long duration;
-    private Integer radiantTowerStatus;
-    private Integer direTowerStatus;
-    private Integer radiantBarrackStatus;
-    private Integer direBarrackStatus;
-    private Integer cluster;
-    private Integer humanPlayers;
-    private Integer leagueId;
-    private Integer positiveVotes;
-    private Integer negativeVotes;
-    private Integer gameMode;
-    private Long firstBloodTime;
-    private Integer season;
-
-    public DotaMatch(Long match_id, Long match_seq_num, Long start_time, Integer lobby_type, List<Player> players) {
-
-        this.match_id = match_id;
-        this.match_seq_num = match_seq_num;
-        this.start_time = start_time;
-        this.lobby_type = lobby_type;
-        this.players = players;
-    }
+    private DotaMatchIdentificationDetails identificationDetails;
+    private DotaMatchQualityDetails qualityDetails;
+    private DotaMatchStructureDetails structureDetails;
 
     @Override
     public boolean equals(Object o) {
@@ -39,56 +16,54 @@ public class DotaMatch {
 
         DotaMatch dotaMatch = (DotaMatch) o;
 
-        if (!lobby_type.equals(dotaMatch.lobby_type)) return false;
-        if (!match_id.equals(dotaMatch.match_id)) return false;
-        if (!match_seq_num.equals(dotaMatch.match_seq_num)) return false;
+        if (!identificationDetails.equals(dotaMatch.identificationDetails)) return false;
         if (!players.equals(dotaMatch.players)) return false;
-        if (!start_time.equals(dotaMatch.start_time)) return false;
+        if (qualityDetails != null ? !qualityDetails.equals(dotaMatch.qualityDetails) : dotaMatch.qualityDetails != null)
+            return false;
+        if (structureDetails != null ? !structureDetails.equals(dotaMatch.structureDetails) : dotaMatch.structureDetails != null)
+            return false;
+        if (!timingDetails.equals(dotaMatch.timingDetails)) return false;
+        if (winningFaction != dotaMatch.winningFaction) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = match_id.hashCode();
-        result = 31 * result + match_seq_num.hashCode();
-        result = 31 * result + start_time.hashCode();
-        result = 31 * result + lobby_type.hashCode();
+        int result = winningFaction != null ? winningFaction.hashCode() : 0;
+        result = 31 * result + identificationDetails.hashCode();
+        result = 31 * result + (qualityDetails != null ? qualityDetails.hashCode() : 0);
+        result = 31 * result + (structureDetails != null ? structureDetails.hashCode() : 0);
+        result = 31 * result + timingDetails.hashCode();
         result = 31 * result + players.hashCode();
         return result;
     }
 
-    public Faction winningFaction() {
-        return winningFaction;
+    private DotaMatchTimingDetails timingDetails;
+    private List<Player> players;
+
+
+    public DotaMatch(Long matchId, Long matchSeqNum, Long startTime, Integer lobbyType, List<Player> players) {
+        this.players = players;
+        identificationDetails = new DotaMatchIdentificationDetails(matchId, matchSeqNum, lobbyType);
+        timingDetails = new DotaMatchTimingDetails(startTime);
     }
 
-    public Long duration() {
-        return duration;
-    }
+    public void addDetails(Long firstBloodTime, Integer season, Faction winningFaction, Long duration,
+                           Integer radiantTowerStatus, Integer direTowerStatus, Integer radiantBarrackStatus,
+                           Integer direBarrackStatus, Integer cluster, Integer leagueId,
+                           Integer positiveVotes, Integer negativeVotes, Integer gameMode) {
 
-    public Integer radiantTowerStatus() {
-        return radiantTowerStatus;
-    }
+        structureDetails = new DotaMatchStructureDetails(radiantTowerStatus,direTowerStatus,radiantBarrackStatus,
+                direBarrackStatus);
 
-    public Integer direTowerStatus() {
-        return direTowerStatus;
-    }
+        qualityDetails = new DotaMatchQualityDetails(positiveVotes,negativeVotes);
 
-    public void addDetails(Long firstBloodTime, Integer season, Faction winningFaction, Long duration, Integer radiantTowerStatus, Integer direTowerStatus, Integer radiantBarrackStatus, Integer direBarrackStatus, Integer cluster, Integer humanPlayers, Integer leagueId, Integer positiveVotes, Integer negativeVotes, Integer gameMode) {
+        identificationDetails.addDetails(cluster, leagueId, season, gameMode);
 
-        this.firstBloodTime = firstBloodTime;
-        this.season = season;
+        timingDetails.addDetails(duration, firstBloodTime);
+
         this.winningFaction = winningFaction;
-        this.duration = duration;
-        this.radiantTowerStatus = radiantTowerStatus;
-        this.direTowerStatus = direTowerStatus;
-        this.radiantBarrackStatus = radiantBarrackStatus;
-        this.direBarrackStatus = direBarrackStatus;
-        this.cluster = cluster;
-        this.humanPlayers = humanPlayers;
-        this.leagueId = leagueId;
-        this.positiveVotes = positiveVotes;
-        this.negativeVotes = negativeVotes;
-        this.gameMode = gameMode;
+
     }
 }

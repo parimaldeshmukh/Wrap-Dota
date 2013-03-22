@@ -16,6 +16,9 @@ public class PlayerDeserializer implements JsonDeserializer<Player> {
         Integer playerSlot = jsonObject.get("player_slot").getAsInt();
         Integer heroId = jsonObject.get("hero_id").getAsInt();
 
+        if(jsonObject.has("level")) {      //some field which is not in history
+            //add other details to player
+        }
 
         return new Player(accountId, playerSlot, heroId);
     }

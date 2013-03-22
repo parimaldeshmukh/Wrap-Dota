@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.wrapdota.model.DotaMatch;
+import org.wrapdota.model.Faction;
 import org.wrapdota.model.Player;
 import org.wrapdota.server.SteamServer;
 
@@ -55,8 +56,7 @@ public class SteamServerTests {
 
         //given
         SteamServer steamServer = new SteamServer("my_dummy_api_key", mockHTTPClient);
-        String serverMatchHistoryResponse = history;
-        HttpEntity stringEntity = new StringEntity(serverMatchHistoryResponse);
+        HttpEntity stringEntity = new StringEntity(history);
 
 
         given(mockHttpResponse.getEntity()).willReturn(stringEntity);
@@ -79,10 +79,10 @@ public class SteamServerTests {
         Long matchId = 1705566L;
 
 
-        String serverMatchDetailsResponse = details;
-        given(mockHttpResponse.getEntity()).willReturn(new StringEntity(serverMatchDetailsResponse));
+        given(mockHttpResponse.getEntity()).willReturn(new StringEntity(details));
 
         DotaMatch expectedDotaMatch = new DotaMatch(1705566L, 1646464L, 1362930291L, 0, setupFirstPlayers());
+        expectedDotaMatch.addDetails(98L, 7, Faction.RADIANT, 1000L, 2047, 1926, 63,63, 181, 0, 2,0,1);
 
         //when
         DotaMatch dotaMatch = steamServer.getMatchDetailsBy(matchId);

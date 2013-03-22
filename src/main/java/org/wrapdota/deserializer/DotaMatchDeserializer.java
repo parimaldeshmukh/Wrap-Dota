@@ -18,7 +18,7 @@ public class DotaMatchDeserializer implements JsonDeserializer<DotaMatch> {
 
         DotaMatch match = createDotaMatchFrom(jsonObject);
 
-        if (jsonObject.has("cluster") && jsonObject.has("duration") && jsonObject.has("game_mode")) {
+        if (jsonObject.has("cluster") && jsonObject.has("duration") && jsonObject.has("game_mode")) { //some field which is not in hisory
             addDetailsTo(match, jsonObject);
         }
 
@@ -41,13 +41,13 @@ public class DotaMatchDeserializer implements JsonDeserializer<DotaMatch> {
         Integer radiantBarrackStatus = jsonObject.get("barracks_status_radiant").getAsInt();
         Integer direBarrackStatus = jsonObject.get("barracks_status_dire").getAsInt();
         Integer cluster = jsonObject.get("cluster").getAsInt();
-        Integer humanPlayers = jsonObject.get("human_players").getAsInt();
+        Integer humanPlayers = jsonObject.get("human_players").getAsInt();    // might not be needed
         Integer leagueId = jsonObject.get("leagueid").getAsInt();
         Integer positiveVotes = jsonObject.get("positive_votes").getAsInt();
         Integer negativeVotes = jsonObject.get("negative_votes").getAsInt();
         Integer gameMode = jsonObject.get("game_mode").getAsInt();
 
-        match.addDetails(firstBloodTime, season, winningFaction, duration, radiantTowerStatus, direTowerStatus, radiantBarrackStatus, direBarrackStatus, cluster, humanPlayers, leagueId, positiveVotes, negativeVotes, gameMode);
+        match.addDetails(firstBloodTime, season, winningFaction, duration, radiantTowerStatus, direTowerStatus, radiantBarrackStatus, direBarrackStatus, cluster, leagueId, positiveVotes, negativeVotes, gameMode);
 
     }
 
@@ -71,12 +71,6 @@ public class DotaMatchDeserializer implements JsonDeserializer<DotaMatch> {
         GsonBuilder playerGsonBuilder = new GsonBuilder();
         playerGsonBuilder.registerTypeAdapter(Player.class, new PlayerDeserializer());
         Gson playerDeserializer = playerGsonBuilder.create();
-//
-//        for (int i = 0; i < playerJsonArray.size(); i++) {
-//            JsonElement playerJsonElement = playerJsonArray.get(i);
-//            Player player = playerDeserializer.fromJson(playerJsonElement, Player.class);
-//            players.add(player);
-//        }
 
         for(JsonElement playerJson : playerJsonArray){
             players.add(playerDeserializer.fromJson(playerJson, Player.class));

@@ -43,23 +43,7 @@ public class SteamServer {
     public List<DotaMatch> getLatestMatches() throws IOException {
 
         String URLToGetLatestMatches = STEAM_API_URL + TEST_API_URL + "GetMatchHistory" + "/V001/?key=" + API_KEY;
-        HttpGet request = new HttpGet(URLToGetLatestMatches);
-        HttpResponse response = client.execute(request);
-
-        HttpEntity entity = response.getEntity();
-        InputStream inputStream = entity.getContent();
-
-        InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
-
-        StringWriter stringWriter = new StringWriter();
-        IOUtils.copy(inputStreamReader, stringWriter);
-
-        String responseString = stringWriter.toString();
-
-        JsonParser jsonParser = new JsonParser();
-        JsonElement jsonResponseElement = jsonParser.parse(responseString);
-
-        JsonObject jsonResponseObject = jsonResponseElement.getAsJsonObject();
+        JsonObject jsonResponseObject = getAsJsonObject(URLToGetLatestMatches);
 
         JsonElement resultJsonElement = jsonResponseObject.get("result");
 
@@ -84,8 +68,20 @@ public class SteamServer {
 
     public DotaMatch getMatchDetailsBy(Long matchId) throws IOException {
 
-        String URLToGetLatestMatches = STEAM_API_URL + TEST_API_URL + "GetMatchDetails" + "/V001/?key=" + API_KEY;
-        HttpGet request = new HttpGet(URLToGetLatestMatches);
+        String urlToGetMatchDetails = STEAM_API_URL + TEST_API_URL + "GetMatchDetails" + "/V001/?key=" + API_KEY + "&match_id=" + matchId;
+        JsonObject jsonResponseObject = getAsJsonObject(urlToGetMatchDetails);
+
+        JsonElement resultJsonElement = jsonResponseObject.get("result");
+
+
+        DotaMatch match = dotaMatchGson.fromJson(resultJsonElement, DotaMatch.class);
+
+        return match;
+    }
+
+
+    private JsonObject getAsJsonObject(String url) throws IOException {
+        HttpGet request = new HttpGet(url);
         HttpResponse response = client.execute(request);
 
         HttpEntity entity = response.getEntity();
@@ -101,13 +97,6 @@ public class SteamServer {
         JsonParser jsonParser = new JsonParser();
         JsonElement jsonResponseElement = jsonParser.parse(responseString);
 
-        JsonObject jsonResponseObject = jsonResponseElement.getAsJsonObject();
-
-        JsonElement resultJsonElement = jsonResponseObject.get("result");
-
-
-        DotaMatch match = dotaMatchGson.fromJson(resultJsonElement, DotaMatch.class);
-
-        return match;
+        return jsonResponseElement.getAsJsonObject();
     }
 }

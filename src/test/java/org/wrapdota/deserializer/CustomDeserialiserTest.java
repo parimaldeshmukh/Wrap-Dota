@@ -1,3 +1,5 @@
+package org.wrapdota.deserializer;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.junit.Test;
@@ -9,7 +11,7 @@ import org.wrapdota.model.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomDeserialiserTests {
+public class CustomDeserialiserTest {
 
     @Test
     public void itDeserialisesPlayerFromJsonResponse() {

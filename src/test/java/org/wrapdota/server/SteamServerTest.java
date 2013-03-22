@@ -1,15 +1,15 @@
+package org.wrapdota.server;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.entity.StringEntity;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.wrapdota.model.DotaMatch;
 import org.wrapdota.model.Faction;
 import org.wrapdota.model.Player;
-import org.wrapdota.server.SteamServer;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import static org.mockito.BDDMockito.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 
-public class SteamServerTests {
+public class SteamServerTest {
 
     static HttpClient mockHTTPClient = mock(HttpClient.class);
     static HttpResponse mockHttpResponse = mock(HttpResponse.class);
@@ -51,8 +51,8 @@ public class SteamServerTests {
 
     }
 
-    @Test()
-    public void itGetsLatestMatches() throws IOException {
+    @Test
+    public void testItGetsLatestMatches() throws IOException {
 
         //given
         SteamServer steamServer = new SteamServer("my_dummy_api_key", mockHTTPClient);
@@ -73,7 +73,7 @@ public class SteamServerTests {
     }
 
     @Test
-    public void itGetsDetailsOfMatchByMatchId() throws IOException {
+    public void testItGetsDetailsOfMatchByMatchId() throws IOException {
         //given
         SteamServer steamServer = new SteamServer("my_dummy_api_key", mockHTTPClient);
         Long matchId = 1705566L;

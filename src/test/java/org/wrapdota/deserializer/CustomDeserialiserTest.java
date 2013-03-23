@@ -3,8 +3,6 @@ package org.wrapdota.deserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.junit.Test;
-import org.wrapdota.deserializer.DotaMatchDeserializer;
-import org.wrapdota.deserializer.PlayerDeserializer;
 import org.wrapdota.model.DotaMatch;
 import org.wrapdota.model.Player;
 

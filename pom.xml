@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>WrapDota</groupId>
-    <artifactId>WrapDota</artifactId>
+    <artifactId>wrapdota</artifactId>
     <version>1.0</version>
     <dependencies>
         <dependency>

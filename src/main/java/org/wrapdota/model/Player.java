@@ -1,16 +1,18 @@
 package org.wrapdota.model;
 
+import java.util.List;
+
 public class Player {
 
-    private final Long account_id;
-    private final Integer player_slot;
-    private final Integer hero_id;
+    private final Long accountId;
+    private final Integer playerSlot;
+    private final Integer heroId;
 
-    public Player(Long account_id, Integer player_slot, Integer hero_id) {
+    public Player(Long accountId, Integer playerSlot, Integer heroId) {
 
-        this.account_id = account_id;
-        this.player_slot = player_slot;
-        this.hero_id = hero_id;
+        this.accountId = accountId;
+        this.playerSlot = playerSlot;
+        this.heroId = heroId;
     }
 
     @Override
@@ -20,18 +22,23 @@ public class Player {
 
         Player player = (Player) o;
 
-        if (!account_id.equals(player.account_id)) return false;
-        if (!hero_id.equals(player.hero_id)) return false;
-        if (!player_slot.equals(player.player_slot)) return false;
+        if (!accountId.equals(player.accountId)) return false;
+        if (!heroId.equals(player.heroId)) return false;
+        if (!playerSlot.equals(player.playerSlot)) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = account_id.hashCode();
-        result = 31 * result + player_slot.hashCode();
-        result = 31 * result + hero_id.hashCode();
+        int result = accountId.hashCode();
+        result = 31 * result + playerSlot.hashCode();
+        result = 31 * result + heroId.hashCode();
         return result;
+    }
+
+    public void addDetails(List<AbilityUpgrade> abilities, List<ItemAndSlot> itemAndSlots, Integer kills, Integer deaths, Integer assists, Boolean leaverStatus, Integer gold, Integer lastHits, Integer denies, Integer goldPerMinute, Integer experiencePerMinute, Integer goldSpent, Integer heroDamage, Integer towerDamage, Integer heroHealing, Integer level) {
+
+
     }
 }

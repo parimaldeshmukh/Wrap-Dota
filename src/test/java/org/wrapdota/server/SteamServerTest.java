@@ -52,7 +52,7 @@ public class SteamServerTest {
     }
 
     @Test
-    public void testItGetsLatestMatches() throws IOException {
+    public void itGetsLatestMatches() throws IOException {
 
         //given
         SteamServer steamServer = new SteamServer("my_dummy_api_key", mockHTTPClient);
@@ -73,7 +73,7 @@ public class SteamServerTest {
     }
 
     @Test
-    public void testItGetsDetailsOfMatchByMatchId() throws IOException {
+    public void itGetsDetailsOfMatchByMatchId() throws IOException {
         //given
         SteamServer steamServer = new SteamServer("my_dummy_api_key", mockHTTPClient);
         Long matchId = 1705566L;

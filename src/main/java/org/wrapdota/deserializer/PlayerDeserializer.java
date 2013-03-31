@@ -37,7 +37,7 @@ public class PlayerDeserializer implements JsonDeserializer<Player> {
             Integer heroDamage = jsonObject.get("hero_damage").getAsInt();
             Integer heroHealing = jsonObject.get("hero_healing").getAsInt();
             Integer towerDamage = jsonObject.get("tower_damage").getAsInt();
-            Boolean leaverStatus = jsonObject.get("leaver_status").getAsBoolean();
+            Boolean leaverStatus = jsonObject.get("leaver_status").getAsInt() == 0 ? false : true;
 
             List<AbilityUpgrade> abilities = setupAbilities(jsonObject.get("ability_upgrades").getAsJsonArray());
             List<ItemAndSlot> itemAndSlots = setupItemAndSlots(jsonObject);

@@ -1,6 +1,6 @@
 package org.wrapdota.model;
 
-public class PlayerGoldExperienceDetails {
+class PlayerGoldExperienceDetails {
     private final Integer gold;
     private final Integer goldPerMinute;
     private final Integer goldSpent;

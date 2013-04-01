@@ -1,6 +1,6 @@
 package org.wrapdota.model;
 
-public class PlayerDamageDetails {
+class PlayerDamageDetails {
     private final Integer heroDamage;
     private final Integer towerDamage;
     private final Integer heroHealing;

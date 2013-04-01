@@ -1,7 +1,7 @@
 package org.wrapdota.model;
 
 
-public class PlayerKDADetails {
+class PlayerKDADetails {
     private final Integer kills;
     private final Integer deaths;
     private final Integer assists;

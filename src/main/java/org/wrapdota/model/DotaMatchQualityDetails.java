@@ -1,6 +1,6 @@
 package org.wrapdota.model;
 
-public class DotaMatchQualityDetails {
+class DotaMatchQualityDetails {
     Integer positiveVotes;
     Integer negativeVotes;
 

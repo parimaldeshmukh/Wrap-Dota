@@ -1,6 +1,6 @@
 package org.wrapdota.model;
 
-public class PlayerIdentificationDetails {
+class PlayerIdentificationDetails {
     private final Long accountId;
     private final Integer playerSlot;
     private final Integer heroId;

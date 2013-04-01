@@ -1,6 +1,6 @@
 package org.wrapdota.model;
 
-public class ItemAndSlot {
+class ItemAndSlot {
 
     Integer itemId;
     Integer atSlot;

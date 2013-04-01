@@ -1,6 +1,6 @@
 package org.wrapdota.model;
 
-public class PlayerLastHitDetails {
+class PlayerLastHitDetails {
     private final Integer lastHits;
     private final Integer denies;
 

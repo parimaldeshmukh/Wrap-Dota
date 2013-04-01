@@ -1,7 +1,7 @@
 package org.wrapdota.model;
 
 
-public class AbilityUpgrade {
+class AbilityUpgrade {
     Integer abilityId;
     Long atTime;
     Integer atLevel;

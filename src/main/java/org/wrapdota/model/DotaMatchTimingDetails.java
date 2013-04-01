@@ -1,7 +1,7 @@
 package org.wrapdota.model;
 
 
-public class DotaMatchTimingDetails {
+class DotaMatchTimingDetails {
     Long startTime;
     Long duration;
     Long firsBloodTime;

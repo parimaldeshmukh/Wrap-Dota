@@ -1,7 +1,7 @@
 package org.wrapdota.model;
 
 
-public class DotaMatchIdentificationDetails {
+class DotaMatchIdentificationDetails {
     Long matchId;
     Long matchSequenceNumber;
     Integer cluster;
